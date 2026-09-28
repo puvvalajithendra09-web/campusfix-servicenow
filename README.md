@@ -38,12 +38,3 @@ graph LR
     D -- "Approved" --> E["State: Work in Progress"]
     D -- "Rejected" --> F["State: Closed Incomplete"]
     E --> G["Automated Email Notification"]
-## Live Demo
-
-🔗 **CampusFix Portal:**  
-https://dev444036.service-now.com/sp?id=campusfix_home
-
-## Demo Login
-
-**Username:** `campus_demo`  
-**Password:** `DemoUser@1234`
