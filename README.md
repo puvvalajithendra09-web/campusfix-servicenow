@@ -8,24 +8,14 @@ An enterprise-grade scoped ServiceNow application engineered to eliminate fragme
 
 ---
 
-## 📸 Solution Architecture & Interface
+## ⚡ Key Features
 
-| Modern Service Portal (`/sp?id=campusfix_home`) | Record Producer Submission |
-| :---: | :---: |
-| ![Portal Home](https://raw.githubusercontent.com/puvvalajithendra09-web/campusfix-servicenow/main/assets/portal_home.png) | ![Record Producer](https://raw.githubusercontent.com/puvvalajithendra09-web/campusfix-servicenow/main/assets/producer.png) |
-
-| Approval Routing (`sysapproval_approver`) | Automated State Transition (`Work in Progress`) |
-| :---: | :---: |
-| ![Approval](https://raw.githubusercontent.com/puvvalajithendra09-web/campusfix-servicenow/main/assets/approval.png) | ![Ticket Updated](https://raw.githubusercontent.com/puvvalajithendra09-web/campusfix-servicenow/main/assets/ticket_wip.png) |
-
----
-
-## ⚡ Core Technical Features
-
-- **Scoped Application Governance:** Built in an isolated scope (`x_2061193_campus_1_`), extending core `task` architecture to ensure clean upgrade paths and instance stability.
-- **Custom Service Portal Landing Page:** Designed a clean 4-card modern responsive interface (`campusfix_home`) catering to booking, maintenance reporting, real-time ticket tracking, and direct administrative support.
-- **End-to-End Workflow Engine:** Configured multi-condition Flow Designer triggers that automatically assign approvals to facility managers and transition record states from `Open` to `Work in Progress`.
-- **Granular Security & ACLs:** Implemented scoped Access Control Lists (ACLs) to enforce row- and field-level security across students, faculty, and administrative personas.
+- **Self-Service Facility Reservation:** End-user portal to request seminar halls, computer labs, and auditoriums with conflict prevention.
+- **Incident & Defect Logging:** Centralized intake for electrical, HVAC, and classroom repair requests.
+- **Automated Multi-Branch Approvals:** Flow Designer engine routing requests dynamically to facility managers.
+- **Transactional Notifications:** Real-time email updates delivered to requesters and approvers via `sys_email`.
+- **Role-Based Security:** Custom Scoped ACLs and script validations safeguarding task and facility data.
+- **Responsive Portal Interface:** Modern 4-card landing portal (`campusfix_home`) built on ServiceNow Service Portal.
 
 ---
 
@@ -42,18 +32,9 @@ An enterprise-grade scoped ServiceNow application engineered to eliminate fragme
 
 ```mermaid
 graph LR
-    A[Portal Submission: Book Facility] --> B[State: Open]
-    B --> C[Flow Designer: Approval Trigger]
-    C --> D{Manager Approval}
-    D -- Approved --> E[State: Work in Progress]
-    D -- Rejected --> F[State: Closed Incomplete]
-    E --> G[Automated Email Notification via sys_email]
-## Live Demo
-
-🔗 **CampusFix Portal:**  
-https://dev444036.service-now.com/sp?id=campusfix_home
-
-## Demo Login
-
-**Username:** `campus_demo`  
-**Password:** `DemoUser@1234`
+    A["Portal Submission: Book Facility"] --> B["State: Open"]
+    B --> C["Flow Designer: Approval Trigger"]
+    C --> D{"Manager Approval"}
+    D -- "Approved" --> E["State: Work in Progress"]
+    D -- "Rejected" --> F["State: Closed Incomplete"]
+    E --> G["Automated Email Notification"]
